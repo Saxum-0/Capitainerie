@@ -16,7 +16,8 @@
   import { onMounted, ref } from 'vue';
   import axios from 'axios';
   import { useUserStore } from '@/stores/user';
-  
+  import api from '@/config/api';
+
   defineOptions({
   name: 'DashboardPage'
     });
