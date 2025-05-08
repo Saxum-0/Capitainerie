@@ -28,11 +28,7 @@
   const handleLogin = async () => {
     error.value = '';
     try {
-      const response = await axios.post('http://localhost:3001/login', {
-        email: email.value,
-        password: password.value,
-      });
-  
+      const response = await api.post('/login', { email, password });
       userStore.setUser(response.data);
       router.push('/dashboard');
     } catch (err) {

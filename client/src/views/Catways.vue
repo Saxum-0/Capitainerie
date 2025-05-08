@@ -26,7 +26,7 @@
   const headers = { Authorization: `Bearer ${userStore.token}` };
   
   onMounted(async () => {
-    const res = await axios.get('http://localhost:3001/catways', { headers });
+    const res = await api.get('/catways', { headers });
     catways.value = res.data;
   });
   </script>

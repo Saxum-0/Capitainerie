@@ -27,7 +27,7 @@
   const headers = { Authorization: `Bearer ${userStore.token}` };
   
   onMounted(async () => {
-    const res = await axios.get('http://localhost:3001/reservations', { headers });
+    const res = await api.get('/catways', { headers });
     reservations.value = res.data;
   });
   </script>
