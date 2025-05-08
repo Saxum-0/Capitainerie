@@ -3,6 +3,7 @@
     <h1>Liste des catways</h1>
     <ul>
       <li v-for="catway in catways" :key="catway._id">
+        <strong>ID :</strong> {{ catway._id }}<br />
         <strong>Numéro :</strong> {{ catway.catwayNumber }} -
         <strong>Type :</strong> {{ catway.type }} -
         <strong>État :</strong> {{ catway.catwayState }}
