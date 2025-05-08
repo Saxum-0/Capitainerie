@@ -18,7 +18,8 @@
   import axios from 'axios';
   import { useRouter } from 'vue-router';
   import { useUserStore } from '@/stores/user';
-  
+  import api from '@/config/api'; 
+
   const email = ref('');
   const password = ref('');
   const error = ref('');
