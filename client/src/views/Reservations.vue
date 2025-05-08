@@ -1,7 +1,12 @@
 <template>
   <div class="reservations">
-    <h1>Liste des réservations</h1>
-    <ul>
+    <h1>Réservations par Catway</h1>
+
+    <!-- Champ pour saisir l'ID du catway -->
+    <input v-model="catwayId" placeholder="ID du catway" />
+    <button @click="fetchReservations">Charger les réservations</button>
+
+    <ul v-if="reservations.length">
       <li v-for="res in reservations" :key="res._id">
         <strong>Client :</strong> {{ res.clientName }} -
         <strong>Bateau :</strong> {{ res.boatName }} -
@@ -10,32 +15,42 @@
         <router-link :to="`/reservation/${res._id}`">Détails</router-link>
       </li>
     </ul>
+
+    <p v-else>Aucune réservation trouvée.</p>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { useUserStore } from '@/stores/user';
 import api from '@/config/api';
 
+const catwayId = ref('');
 const reservations = ref([]);
 const userStore = useUserStore();
 const headers = { Authorization: `Bearer ${userStore.token}` };
 
-onMounted(async () => {
+const fetchReservations = async () => {
+  if (!catwayId.value) return;
+
   try {
-    const res = await api.get('/reservations', { headers });
+    const res = await api.get(`/catways/${catwayId.value}/reservations`, { headers });
     reservations.value = res.data;
   } catch (err) {
     console.error('❌ Erreur chargement réservations :', err);
+    reservations.value = [];
   }
-});
+};
 </script>
 
 <style scoped>
 .reservations {
   max-width: 700px;
   margin: 0 auto;
+}
+input {
+  margin-right: 10px;
+  padding: 0.5rem;
 }
 ul {
   list-style: none;
