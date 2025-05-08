@@ -14,29 +14,38 @@
   </template>
   
   <script setup>
-  import { ref } from 'vue';
-  import axios from 'axios';
-  import { useRouter } from 'vue-router';
-  import { useUserStore } from '@/stores/user';
-  import api from '@/config/api'; 
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/user';
+import api from '@/config/api';
 
-  const email = ref('');
-  const password = ref('');
-  const error = ref('');
-  const router = useRouter();
-  const userStore = useUserStore();
-  
-  const handleLogin = async () => {
-    error.value = '';
-    try {
-      const response = await api.post('/login', { email, password });
-      userStore.setUser(response.data);
-      router.push('/dashboard');
-    } catch (err) {
-      error.value = err.response?.data?.error || 'Erreur lors de la connexion';
-    }
-  };
-  </script>
+const email = ref('');
+const password = ref('');
+const error = ref('');
+const router = useRouter();
+const userStore = useUserStore();
+
+const handleLogin = async () => {
+  error.value = '';
+
+  console.log("🔗 API =", import.meta.env.VITE_API_URL);
+  console.log("📤 Données envoyées :", { email: email.value, password: password.value });
+
+  try {
+    const response = await api.post('/login', {
+      email: email.value,
+      password: password.value
+    });
+
+    userStore.setUser(response.data);
+    router.push('/dashboard');
+  } catch (err) {
+    console.error("❌ ERREUR API :", err);
+    error.value = err.response?.data?.error || 'Erreur lors de la connexion';
+  }
+};
+</script>
+
   
   <style scoped>
   .login-form {
