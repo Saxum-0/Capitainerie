@@ -98,6 +98,8 @@
 import { ref } from 'vue';
 import { useUserStore } from '@/stores/user';
 import api from '@/config/api';
+import { useRouter } from 'vue-router';
+
 
 defineOptions({
   name: 'DashboardPage'
@@ -105,6 +107,7 @@ defineOptions({
 
 const userStore = useUserStore();
 const headers = { Authorization: `Bearer ${userStore.token}` };
+const router = useRouter();
 
 const userForm = ref({ id: '', name: '', email: '', password: '' });
 const catwayForm = ref({ id: '', catwayNumber: '', type: '', catwayState: '' });
@@ -134,9 +137,9 @@ const deleteCatway = async () => {
   await api.delete(`/catways/${catwayForm.value.id}`, { headers });
 };
 
-const getCatwayDetails = async () => {
-  const res = await api.get(`/catways/${catwayForm.value.id}`, { headers });
-  console.log(res.data);
+const getCatwayDetails = () => {
+  if (!catwayForm.value.id) return;
+  router.push(`/catway/${catwayForm.value.id}`);
 };
 
 const createReservation = async () => {
@@ -147,9 +150,9 @@ const deleteReservation = async () => {
   await api.delete(`/catways/any/reservations/${reservationForm.value.id}`, { headers });
 };
 
-const getReservationDetails = async () => {
-  const res = await api.get(`/catways/any/reservations/${reservationForm.value.id}`, { headers });
-  console.log(res.data);
+const getReservationDetails = () => {
+  if (!reservationForm.value.id) return;
+  router.push(`/reservation/${reservationForm.value.id}`);
 };
 </script>
 
