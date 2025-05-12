@@ -60,9 +60,9 @@
       </form>
 
       <form @submit.prevent="getCatwayDetails">
-        <input v-model="catwayForm.id" placeholder="ID catway" required />
-        <button type="submit">Afficher</button>
-      </form>
+  <input v-model="catwayForm.id" placeholder="ID catway" required />
+  <button type="submit">Afficher</button>
+</form>
 
     </section>
 
@@ -138,14 +138,9 @@ const deleteCatway = async () => {
 };
 
 const getCatwayDetails = () => {
-  if (!catwayForm.value.id) {
-    alert('ID manquant');
-    return;
-  }
-  console.log('🔍 Redirection vers catway ID :', catwayForm.value.id);
+  if (!catwayForm.value.id) return;
   router.push(`/catway/${catwayForm.value.id}`);
 };
-
 
 const createReservation = async () => {
   await api.post(`/catways/${reservationForm.value.catwayNumber}/reservations`, reservationForm.value, { headers });
@@ -155,9 +150,9 @@ const deleteReservation = async () => {
   await api.delete(`/catways/any/reservations/${reservationForm.value.id}`, { headers });
 };
 
-const getCatwayDetails = () => {
-  if (!catwayForm.value.id) return;
-  router.push(`/catway/${catwayForm.value.id}`);
+const getReservationDetails = () => {
+  if (!reservationForm.value.id) return;
+  router.push(`/reservation/${reservationForm.value.id}`);
 };
 </script>
 
