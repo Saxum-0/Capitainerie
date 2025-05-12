@@ -60,10 +60,10 @@
       </form>
 
       <form @submit.prevent="getCatwayDetails">
-        <h3>Détails d'un catway</h3>
         <input v-model="catwayForm.id" placeholder="ID catway" required />
-        <button>Afficher</button>
+        <button type="submit">Afficher</button>
       </form>
+
     </section>
 
     <!-- FORMULAIRES RESERVATION -->
@@ -155,9 +155,9 @@ const deleteReservation = async () => {
   await api.delete(`/catways/any/reservations/${reservationForm.value.id}`, { headers });
 };
 
-const getReservationDetails = () => {
-  if (!reservationForm.value.id) return;
-  router.push(`/reservation/${reservationForm.value.id}`);
+const getCatwayDetails = () => {
+  if (!catwayForm.value.id) return;
+  router.push(`/catway/${catwayForm.value.id}`);
 };
 </script>
 
