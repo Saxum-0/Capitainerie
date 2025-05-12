@@ -17,9 +17,11 @@ const route = useRoute();
 const catway = ref(null);
 const userStore = useUserStore();
 const headers = { Authorization: `Bearer ${userStore.token}` };
+const id = route.params.id;
 
 onMounted(async () => {
-  const res = await api.get(`/catways/${route.params.id}`, { headers });
+  const res = await api.get(`/catways/${id}`, { headers });
+
   catway.value = res.data;
 });
 </script>

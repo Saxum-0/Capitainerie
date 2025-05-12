@@ -16,6 +16,12 @@ const routes = [
   { path: '/reservations', name: 'Reservations', component: Reservations, meta: { requiresAuth: true } },
   { path: '/reservation/:id', name: 'ReservationDetails', component: ReservationDetails, meta: { requiresAuth: true } },
   { path: '/documentation', name: 'Documentation', component: Documentation },
+  {
+    path: '/catway/:id',
+    name: 'CatwayDetails',
+    component: () => import('@/views/CatwayDetails.vue')
+  }
+  
 ];
 
 const router = createRouter({
