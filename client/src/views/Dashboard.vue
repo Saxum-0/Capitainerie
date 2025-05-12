@@ -138,9 +138,14 @@ const deleteCatway = async () => {
 };
 
 const getCatwayDetails = () => {
-  if (!catwayForm.value.id) return;
+  if (!catwayForm.value.id) {
+    alert('ID manquant');
+    return;
+  }
+  console.log('🔍 Redirection vers catway ID :', catwayForm.value.id);
   router.push(`/catway/${catwayForm.value.id}`);
 };
+
 
 const createReservation = async () => {
   await api.post(`/catways/${reservationForm.value.catwayNumber}/reservations`, reservationForm.value, { headers });
