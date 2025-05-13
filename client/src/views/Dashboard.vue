@@ -58,15 +58,12 @@
         <input v-model="catwayForm.id" placeholder="ID catway" required />
         <button>Supprimer</button>
       </form>
-      
-     
 
       <form @submit.prevent="getCatwayDetails">
         <h3>Détail d'un catway</h3>
         <input v-model="catwayForm.id" placeholder="ID catway" required />
         <button type="submit">Afficher</button>
       </form>
-
     </section>
 
     <!-- FORMULAIRES RESERVATION -->
@@ -98,68 +95,79 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { reactive } from 'vue';
+import { useRouter } from 'vue-router';
 import { useUserStore } from '@/stores/user';
 import api from '@/config/api';
-import { useRouter } from 'vue-router';
-
+import { useToast } from 'vue-toastification'; // 🧁
 
 defineOptions({
   name: 'DashboardPage'
 });
 
+const router = useRouter();
+const toast = useToast(); // 🧁 Instance
 const userStore = useUserStore();
 const headers = { Authorization: `Bearer ${userStore.token}` };
-const router = useRouter();
 
-const userForm = ref({ id: '', name: '', email: '', password: '' });
-const catwayForm = ref({ id: '', catwayNumber: '', type: '', catwayState: '' });
-const reservationForm = ref({ id: '', catwayNumber: '', clientName: '', boatName: '', checkIn: '', checkOut: '' });
+const userForm = reactive({ id: '', name: '', email: '', password: '' });
+const catwayForm = reactive({ id: '', catwayNumber: '', type: '', catwayState: '' });
+const reservationForm = reactive({ id: '', catwayNumber: '', clientName: '', boatName: '', checkIn: '', checkOut: '' });
 
+// === FONCTIONS UTILISATEUR ===
 const createUser = async () => {
-  await api.post('/users', userForm.value, { headers });
+  await api.post('/users', userForm, { headers });
+  toast.success('✅ Utilisateur créé !');
 };
 
 const updateUser = async () => {
-  await api.put(`/users/${userForm.value.id}`, userForm.value, { headers });
+  await api.put(`/users/${userForm.id}`, userForm, { headers });
+  toast.success('🔁 Utilisateur modifié.');
 };
 
 const deleteUser = async () => {
-  await api.delete(`/users/${userForm.value.id}`, { headers });
+  await api.delete(`/users/${userForm.id}`, { headers });
+  toast.info('🗑️ Utilisateur supprimé.');
 };
 
+// === FONCTIONS CATWAY ===
 const createCatway = async () => {
-  await api.post('/catways', catwayForm.value, { headers });
+  await api.post('/catways', catwayForm, { headers });
+  toast.success('✅ Catway créé !');
 };
 
 const updateCatway = async () => {
-  await api.patch(`/catways/${catwayForm.value.id}`, { catwayState: catwayForm.value.catwayState }, { headers });
+  await api.patch(`/catways/${catwayForm.id}`, { catwayState: catwayForm.catwayState }, { headers });
+  toast.success('🔁 État du catway mis à jour.');
 };
 
 const deleteCatway = async () => {
-  await api.delete(`/catways/${catwayForm.value.id}`, { headers });
+  await api.delete(`/catways/${catwayForm.id}`, { headers });
+  toast.info('🗑️ Catway supprimé.');
 };
 
 const getCatwayDetails = () => {
-  if (!catwayForm.value.id) return;
-  console.log("🔁 Redirection vers /catway/", catwayForm.value.id);
-  router.push(`/catway/${catwayForm.value.id}`);
+  if (!catwayForm.id) return;
+  router.push(`/catway/${catwayForm.id}`);
 };
 
-
+// === FONCTIONS RÉSERVATION ===
 const createReservation = async () => {
-  await api.post(`/catways/${reservationForm.value.catwayNumber}/reservations`, reservationForm.value, { headers });
+  await api.post(`/catways/${reservationForm.catwayNumber}/reservations`, reservationForm, { headers });
+  toast.success('✅ Réservation enregistrée !');
 };
 
 const deleteReservation = async () => {
-  await api.delete(`/catways/any/reservations/${reservationForm.value.id}`, { headers });
+  await api.delete(`/catways/any/reservations/${reservationForm.id}`, { headers });
+  toast.info('🗑️ Réservation supprimée.');
 };
 
 const getReservationDetails = () => {
-  if (!reservationForm.value.id) return;
-  router.push(`/reservation/${reservationForm.value.id}`);
+  if (!reservationForm.id) return;
+  router.push(`/reservation/${reservationForm.id}`);
 };
 </script>
+
 
 <style scoped>
 .dashboard {
@@ -173,3 +181,4 @@ nav a {
   margin-right: 10px;
 }
 </style>
+
