@@ -8,6 +8,7 @@
 
     <ul v-if="reservations.length">
       <li v-for="res in reservations" :key="res._id">
+        <strong>ID :</strong> {{ res._id }}
         <strong>Client :</strong> {{ res.clientName }} -
         <strong>Bateau :</strong> {{ res.boatName }} -
         <strong>Catway :</strong> {{ res.catwayNumber }} -

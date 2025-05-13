@@ -1,5 +1,5 @@
 <template>
-  <div class="catway-details" v-if="catway?.value?._id">
+  <div class="catway-details" v-if="catway.value && catway.value._id">
     <h1>Détails du catway</h1>
     <p><strong>ID :</strong> {{ catway.value._id }}</p>
     <p><strong>Numéro :</strong> {{ catway.value.catwayNumber }}</p>
@@ -36,13 +36,3 @@ onMounted(async () => {
   }
 })
 </script>
-
-<style scoped>
-.catway-details {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-</style>

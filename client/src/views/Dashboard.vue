@@ -58,11 +58,14 @@
         <input v-model="catwayForm.id" placeholder="ID catway" required />
         <button>Supprimer</button>
       </form>
+      
+     
 
       <form @submit.prevent="getCatwayDetails">
-  <input v-model="catwayForm.id" placeholder="ID catway" required />
-  <button type="submit">Afficher</button>
-</form>
+        <h3>Détail d'un catway</h3>
+        <input v-model="catwayForm.id" placeholder="ID catway" required />
+        <button type="submit">Afficher</button>
+      </form>
 
     </section>
 
