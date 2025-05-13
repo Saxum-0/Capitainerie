@@ -1,12 +1,10 @@
 <template>
   <Navbar />
-  <Toastest />
   <router-view />
 </template>
 
 <script setup>
 import Navbar from '@/components/Navbar.vue';
-import Toastest from './components/toastest.vue';
 </script>
 
 <style>

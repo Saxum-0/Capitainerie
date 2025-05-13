@@ -46,14 +46,6 @@ const handleLogin = async () => {
   }
 };
 
-import { onMounted } from 'vue';
-import { useToast } from 'vue-toastification';
-
-onMounted(() => {
-  toast.success('✅ OnMounted toast');
-});
-
-
 </script>
 
 <style scoped>
