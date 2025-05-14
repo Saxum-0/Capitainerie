@@ -105,7 +105,7 @@ const reservationForm = reactive({ id: '', catwayNumber: '', clientName: '', boa
 const resetForm = (form) => Object.keys(form).forEach(key => form[key] = '');
 
 const logout = () => {
-  userStore.clearUser();
+  userStore.logout();
   router.push('/');
   toast.info('Vous avez été déconnecté.');
 };
@@ -247,4 +247,40 @@ nav a {
   color: #c00;
   cursor: pointer;
 }
+button {
+  padding: 0.5rem 1rem;
+  background-color: #284c3d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  background-color: #3a6a54;
+}
+
+button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+input {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+form {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+}
+
 </style>
