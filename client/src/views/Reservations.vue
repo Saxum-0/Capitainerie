@@ -3,7 +3,7 @@
     <h1>Réservations par Catway</h1>
 
     <!-- Champ pour saisir l'ID du catway -->
-    <input v-model="catwayId" placeholder="Numéro du catway" />
+    <input v-model="catwayNumber" placeholder="Numéro du catway" />
     <button @click="fetchReservations">Charger les réservations</button>
 
     <ul v-if="reservations.length">
