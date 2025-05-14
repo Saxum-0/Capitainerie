@@ -1,9 +1,9 @@
 <template>
   <div class="documentation">
-    <h1>📚 Documentation de l'API – Port de Plaisance de Russell</h1>
+    <h1>Documentation de l'API – Port de Plaisance de Russell</h1>
 
     <section>
-      <h2>🔐 Authentification</h2>
+      <h2>Authentification</h2>
       <p>
         L'API est protégée. Pour accéder aux routes, vous devez d’abord vous authentifier via la route suivante :
       </p>
@@ -22,7 +22,7 @@
     </section>
 
     <section>
-      <h2>🚢 Ressource : Catways</h2>
+      <h2>Ressource : Catways</h2>
       <ul>
         <li><code>GET /catways</code> – Liste tous les catways</li>
         <li><code>GET /catways/:id</code> – Détail d’un catway</li>
@@ -40,7 +40,7 @@
     </section>
 
     <section>
-      <h2>📅 Ressource : Réservations</h2>
+      <h2>Ressource : Réservations</h2>
       <ul>
         <li><code>GET /catways/:id/reservations</code> – Toutes les réservations pour un catway</li>
         <li><code>GET /catways/:id/reservations/:idReservation</code> – Détail d'une réservation</li>
@@ -57,7 +57,7 @@
     </section>
 
     <section>
-      <h2>👤 Ressource : Utilisateurs</h2>
+      <h2>Ressource : Utilisateurs</h2>
       <ul>
         <li><code>POST /users</code> – Créer un utilisateur</li>
         <li><code>PUT /users/:id</code> – Modifier un utilisateur</li>
@@ -66,7 +66,7 @@
     </section>
 
     <section>
-      <h2>🧪 Tests</h2>
+      <h2>Tests</h2>
       <p>
         Chaque fonctionnalité a été testée avec : validation des entrées, réponses HTTP correctes, gestion des erreurs.
       </p>
