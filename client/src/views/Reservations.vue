@@ -3,7 +3,7 @@
     <h1>Réservations par Catway</h1>
 
     <!-- Champ pour saisir l'ID du catway -->
-    <input v-model="catwayNumber" placeholder="Numéro du catway" />
+    <input v-model="catwayId" placeholder="Numéro du catway" />
     <button @click="fetchReservations">Charger les réservations</button>
 
     <ul v-if="reservations.length">
@@ -35,7 +35,7 @@ const fetchReservations = async () => {
   if (!catwayId.value) return;
 
   try {
-    const res = await api.get(`/catways/${string(catwayId.value)}/reservations`, { headers });
+    const res = await api.get(`/catways/${catwayId.value}/reservations`, { headers });
     reservations.value = res.data;
   } catch (err) {
     console.error('❌ Erreur chargement réservations :', err);
