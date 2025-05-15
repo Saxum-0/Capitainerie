@@ -72,11 +72,13 @@
     </section>
 
     <section>
-      <h2>Tests</h2>
-      <p>
-        Chaque fonctionnalité a été testée avec : validation des entrées, réponses HTTP correctes, gestion des erreurs.
-      </p>
-    </section>
+  <h2>Tests</h2>
+  <p>
+    L'ensemble des fonctionnalités critiques de l'application (authentification, gestion des catways, réservations et utilisateurs) ont fait l’objet de tests unitaires automatisés à l’aide de <strong>Mocha</strong> et <strong>Chai</strong>. 
+    Ces tests sont exécutés automatiquement au lancement du serveur en environnement de développement, et leurs résultats s’affichent directement dans la console.
+  </p>
+</section>
+
 
     <section>
       <h2>🌐 Hébergement</h2>
