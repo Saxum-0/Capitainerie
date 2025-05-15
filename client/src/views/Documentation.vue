@@ -85,6 +85,15 @@
         <li><strong>Backend :</strong> <a href="https://capitainerie-back.onrender.com" target="_blank">Render</a></li>
       </ul>
     </section>
+    <section>
+  <h2>📖 Glossaire</h2>
+  <ul>
+    <li><strong>JWT :</strong> Jeton d'accès permettant l’authentification sécurisée</li>
+    <li><strong>Catway :</strong> Quai flottant individuel pour amarrer un bateau</li>
+    <li><strong>Check-in / Check-out :</strong> Date d'arrivée et de départ de la réservation</li>
+  </ul>
+</section>
+
   </div>
 </template>
 
