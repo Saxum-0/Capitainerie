@@ -15,11 +15,13 @@ Backend (Express/MongoDB – Render) :
 
 👉 https://capitainerie-back.onrender.com
 
+test dans server // npm start
+
 (⚠️ Ne contient pas de page HTML — API uniquement)
 
 Repositories GitHub
 
-Repository complet (monorepo) :
+Repository complet :
 
 👉 https://github.com/Saxum-0/capitainerie.git
 
