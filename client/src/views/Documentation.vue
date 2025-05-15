@@ -1,7 +1,13 @@
 <template>
   <div class="documentation">
     <h1>Documentation de l'API – Port de Plaisance de Russell</h1>
-
+      <section class="video-section">
+      <h2>🎥 Démonstration</h2>
+      <video controls width="100%">
+        <source src="/demo.mov" type="video/mp4" />
+        Votre navigateur ne prend pas en charge la vidéo.
+      </video>
+    </section>
     <section>
       <h2>Authentification</h2>
       <p>
