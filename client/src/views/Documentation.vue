@@ -4,7 +4,7 @@
       <section class="video-section">
       <h2>🎥 Démonstration</h2>
       <video controls width="100%">
-        <source src="/demo.mov" type="video/mp4" />
+        <source src="/client/public/demo.mov" type="video/mp4" />
         Votre navigateur ne prend pas en charge la vidéo.
       </video>
     </section>
